@@ -26,15 +26,22 @@ public class Solution {
         for(int pDay=1; pDay<=n; pDay++){
 
             while(houseQueue.size()!=0){
-                ArrayList<Integer> popPair = houseQueue.poll(); // [startDay,endDay,houseNumber]
-                if(popPair.get(0) <= pDay &&  pDay <= popPair.get(1)){
-                    // can paint the house
-                    housePaintString.append(Integer.toString(popPair.get(2)));
+                ArrayList<Integer> peekHouse = houseQueue.peek();
+
+                if(peekHouse.get(0)<=pDay && pDay<=peekHouse.get(1)){
+                    //paint the house
+                    houseQueue.remove(); // head of the queue
+                    housePaintString.append(peekHouse.get(2));
                     housePaintString.append(" ");
-                    // painter can paint 1 house is a day, so break
+                    break; // paint 1 house in a day
+                } else if (peekHouse.get(0)<=pDay && pDay>peekHouse.get(1)) {
+                    // breech of endDay, just remove the pair
+                    houseQueue.remove();
+                    continue;
+                } else if (peekHouse.get(0)>pDay) {
+                    // this house isn't available for painting, painter relaxes
                     break;
                 }
-                continue;
             }
 
             // myQueue is empty, no need to check further
