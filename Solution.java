@@ -5,7 +5,6 @@ Paint houses that are available the earliest
  */
 
 public class Solution {
-
     private String strat1(ArrayList<ArrayList<Integer>> timelines, int n, int m){
         /*
         paint the house that started being available the earliest
@@ -47,7 +46,6 @@ public class Solution {
         // trim the white space
         return housePaintString.toString().trim();
     }
-
     private String strat2(ArrayList<ArrayList<Integer>> timelines, int n, int m){
         /*
         paint the house that started being available the latest
@@ -72,6 +70,7 @@ public class Solution {
                 }
             }
         });
+
         int housePtr = 0;
         for(int pDay=1; pDay<=n; pDay++){
 
@@ -91,10 +90,6 @@ public class Solution {
                 continue;
             }
 
-            if(pDay == 3){
-                int x = 1;
-            }
-
             // chk if you can paint the house or not
             while(latestHouses.size()!=0){
 
@@ -104,7 +99,7 @@ public class Solution {
                 if(peekHouse.get(0) <= pDay &&  pDay <= peekHouse.get(1)){
 
                     // paint it, remove the house from the priorityQueue & move to the next day
-                    System.out.println("Peek House:\t"+ Arrays.toString(peekHouse.toArray()));
+                    // System.out.println("Peek House:\t"+ Arrays.toString(peekHouse.toArray()));
 
                     housePaintString.append(Integer.toString(peekHouse.get(2)));
                     housePaintString.append(" ");
@@ -127,10 +122,74 @@ public class Solution {
         return housePaintString.toString().trim();
     }
 
-    private void strat3(){
+    private String strat3(ArrayList<ArrayList<Integer>> timelines, int n, int m){
         /*
         paint the house that is available for the shortest duration
          */
+
+        StringBuilder housePaintString = new StringBuilder();
+
+        PriorityQueue <ArrayList<Integer>> latestHouses = new PriorityQueue<>(new Comparator<ArrayList<Integer>>() {
+            @Override
+            public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
+                if(o1.get(2)==o2.get(2)){
+                    return o1.get(1).compareTo(o2.get(1)); //ascending order of endDate for duration conflict
+                }else {
+                    return o1.get(2).compareTo(o2.get(2)); // min-heap for duration
+                }
+            }
+        });
+
+        int housePtr = 0;
+        for(int pDay=1; pDay<=n; pDay++){
+
+            // add the houses that became available inside the priorityQueue on pDay
+            while(housePtr < m){
+                ArrayList<Integer> pair = timelines.get(housePtr);
+                if(pair.get(0) == pDay){
+                    pair.add(pair.get(1)-pair.get(0)); // difference of duration (endDay-startDay)
+                    pair.add(housePtr+1); // starting from 0th index
+                    latestHouses.add(pair);
+                    housePtr+=1;
+                }else{
+                    break;
+                }
+            }
+            // extract head from the queue, paint-it and go ahead
+            if(latestHouses.size()==0){
+                continue;
+            }
+
+            // chk if you can paint the house or not
+            while(latestHouses.size()!=0){
+
+                // chk the head of the priorityQueue & decide if you can paint it or not
+                ArrayList<Integer> peekHouse = latestHouses.peek();
+
+                if(peekHouse.get(0) <= pDay &&  pDay <= peekHouse.get(1)){
+
+                    // paint it, remove the house from the priorityQueue & move to the next day
+                    // System.out.println("Peek House:\t"+ Arrays.toString(peekHouse.toArray()));
+                    housePaintString.append(Integer.toString(peekHouse.get(3)));
+                    housePaintString.append(" ");
+                    latestHouses.remove();
+                    break; // painted 1 house in a day
+
+                } else if (peekHouse.get(0) <= pDay &&  pDay > peekHouse.get(1)) {
+                    // breech of endDay
+                    // just remove the house
+                    latestHouses.remove();
+                    continue;
+
+                } else if (pDay < peekHouse.get(0)) {
+                    // start day hasn't arrived, no need to check further
+                    break;
+                }
+            }
+        }
+
+        // remove last added white space & return the string
+        return housePaintString.toString().trim();
     }
 
     private void strat4(){
@@ -184,9 +243,12 @@ public class Solution {
         Solution obj = new Solution();
 
         // chk for strat1
-        //System.out.println("strat1 result = "+obj.strat1(timelines,n,m));
+        System.out.println("strat1 result = "+obj.strat1(timelines,n,m));
 
         // chk for strat2
         System.out.println("strat2 result = "+obj.strat2(timelines,n,m));
+
+        // chk for strat3
+        System.out.println("strat3 result = "+obj.strat3(timelines,n,m));
     }
 }
