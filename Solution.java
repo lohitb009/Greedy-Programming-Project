@@ -9,6 +9,13 @@ public class Solution {
         /*
         paint the house that started being available the earliest
          */
+         /*
+        Approach:
+        1) Add all the houses inside the queue (pre-processing step).
+        2) For the pDay, paint the head of the queue if its timelines are in the range (startDay<=pDay<=endDay).
+        3) If the endDay of the house is breached (startDay<=pDay but pDay>endDay), remove the head of the queue & check the next pair.
+        4) If the house isn't available (startDay>pDay), the painter will relax and move on to the next day.
+         */
 
         StringBuilder housePaintString = new StringBuilder();
 
@@ -73,7 +80,7 @@ public class Solution {
                 if(o1.get(0)==o2.get(0)){
                     return o1.get(1).compareTo(o2.get(1)); //ascending order of endDate for startDates conflict
                 }else {
-                    return o2.get(0).compareTo(o1.get(0)); // max-heap
+                    return o2.get(0).compareTo(o1.get(0)); // max-heap, new listing preference on pDay than the previous available listings
                 }
             }
         });
@@ -131,6 +138,13 @@ public class Solution {
     private String strat3(ArrayList<ArrayList<Integer>> timelines, int n, int m){
         /*
         paint the house that is available for the shortest duration
+         */
+        /*
+        Approach:
+        1) Take the house that became available in the pDay days, calculate the duration and add the pair (inclusive of duration) to min-heap.
+        2) If no new house is available, pick any previous availability & paint conditionally
+        3) If new house is available, add the pair (inclusive of duration) to the min-heap
+        4) Use MIN-HEAP priority queue on the basis of "duration"; in-case of same duration, prioritize in increasing order of end-day
          */
 
         StringBuilder housePaintString = new StringBuilder();
@@ -197,10 +211,16 @@ public class Solution {
         // remove last added white space & return the string
         return housePaintString.toString().trim();
     }
-
     private String strat4(ArrayList<ArrayList<Integer>> timelines, int n, int m){
         /*
         paint the house that will stop being available the earliest
+         */
+        /*
+        Approach:
+        1) Take the house that became available in the pDay days and add to the MIN-HEAP on the basis of endDate
+        2) If no new house is available, pick any previous availability & paint conditionally
+        3) If new house is available, add the pair to the min-heap
+        4) Use MIN-HEAP priority queue on the basis of "endDay"; in-case of same duration, prioritize in increasing order of startDay.
          */
         StringBuilder housePaintString = new StringBuilder();
 
