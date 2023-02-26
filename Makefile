@@ -21,6 +21,9 @@ run3: Solution_Strat3.class
 
 run4: Solution_Strat4.class
 	$(JR) Solution_Strat4
+	
+run5: Solution_StratBonus.class
+	$(JR) Solution_StratBonus
 
 clean:
 	rm -f *.class
