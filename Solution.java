@@ -5,6 +5,7 @@ Paint houses that are available the earliest
  */
 
 public class Solution {
+
     private String strat1(ArrayList<ArrayList<Integer>> timelines, int n, int m){
         /*
         paint the house that started being available the earliest
@@ -222,6 +223,7 @@ public class Solution {
         3) If new house is available, add the pair to the min-heap
         4) Use MIN-HEAP priority queue on the basis of "endDay"; in-case of same duration, prioritize in increasing order of startDay.
          */
+
         StringBuilder housePaintString = new StringBuilder();
 
         PriorityQueue <ArrayList<Integer>> latestHouses = new PriorityQueue<>(new Comparator<ArrayList<Integer>>() {
@@ -334,15 +336,31 @@ public class Solution {
         Solution obj = new Solution();
 
         // chk for strat1
-        System.out.println("strat1 result = "+obj.strat1(timelines,n,m));
+        ArrayList<ArrayList<Integer>> timelines1 = new ArrayList<>();
+        for(int i=0; i<timelines.size(); i++){
+            timelines1.add((ArrayList<Integer>) timelines.get(i).clone());
+        }
+        System.out.println("strat1 result = "+obj.strat1(timelines1,n,m));
 
         // chk for strat2
-        System.out.println("strat2 result = "+obj.strat2(timelines,n,m));
+        ArrayList<ArrayList<Integer>> timelines2 = new ArrayList<>();
+        for(int i=0; i<timelines.size(); i++){
+            timelines2.add((ArrayList<Integer>) timelines.get(i).clone());
+        }
+        System.out.println("strat2 result = "+obj.strat2(timelines2,n,m));
 
         // chk for strat3
-        System.out.println("strat3 result = "+obj.strat3(timelines,n,m));
+        ArrayList<ArrayList<Integer>> timelines3 = new ArrayList<>();
+        for(int i=0; i<timelines.size(); i++){
+            timelines3.add((ArrayList<Integer>) timelines.get(i).clone());
+        }
+        System.out.println("strat3 result = "+obj.strat3(timelines3,n,m));
 
         // chk for strat4
-        System.out.println("strat4 result = "+obj.strat4(timelines,n,m));
+        ArrayList<ArrayList<Integer>> timelines4 = new ArrayList<>();
+        for(int i=0; i<timelines.size(); i++){
+            timelines4.add((ArrayList<Integer>) timelines.get(i).clone());
+        }
+        System.out.println("strat4 result = "+obj.strat4(timelines4,n,m));
     }
 }
