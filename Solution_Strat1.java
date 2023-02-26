@@ -7,14 +7,27 @@ Paint houses that are available the earliest
 public class Solution_Strat1 {
     public static void main(String[] args) {
 
+        // Input from user for line1
+        Scanner sc = new Scanner(System.in);
+
         // assumption right now
-        String line1 = "6 10";
-        String[] lineM = new String[]{"3 4", "1 3", "2 3", "2 4", "1 2", "2 6", "3 4", "1 5", "3 4", "3 6"};
+        //String line1 = "6 10";
+        System.out.println("Enter n<space>m value:");
+        String line1 = sc.nextLine();
+        //System.out.println("\nInput n<space>m are:\t"+line1);
 
         // preprocessing step
         String[] line1Split = line1.split("\\s+");
         int n = Integer.parseInt(line1Split[0]);
         int m = Integer.parseInt(line1Split[1]);
+
+        // Input lineM
+        System.out.println("Enter 'm' pair's i.e. (startDay<space>endDay):");
+        String[] lineM = new String[m];
+        //String[] lineM = new String[]{"3 4", "1 3", "2 3", "2 4", "1 2", "2 6", "3 4", "1 5", "3 4", "3 6"};
+        for(int i=0; i<m; i++){
+            lineM[i] = sc.nextLine();
+        }
 
         ArrayList<ArrayList<Integer>> timelines = new ArrayList<>();
         for (int i = 0; i < lineM.length; i++) {

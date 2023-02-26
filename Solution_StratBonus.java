@@ -1,23 +1,30 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Solution_StratBonus {
     public static void main(String[] args) {
 
-        // assumption right now
-        String line1 = "100 11";
-        /*Strategy Bonus*/
-        String[] lineM_bonus = new String[]{"3 4", "1 3", "2 3", "2 4", "1 2", "2 6", "3 4", "1 5", "70 80", "3 6", "90 100"};
+        // Input from user for line1
+        Scanner sc = new Scanner(System.in);
 
+        // assumption right now
+        //String line1 = "100 11";
+        System.out.println("Enter n<space>m value:");
+        String line1 = sc.nextLine();
+        //System.out.println("\nInput n<space>m are:\t"+line1);
 
         // preprocessing step
         String[] line1Split = line1.split("\\s+");
         int n = Integer.parseInt(line1Split[0]);
         int m = Integer.parseInt(line1Split[1]);
 
-        Solution_StratBonus obj = new Solution_StratBonus();
+        /*Strategy Bonus*/
+        // Input for lineM
+        System.out.println("Enter 'm' pair's i.e. (startDay<space>endDay):");
+        String[] lineM_bonus = new String[m];
+        //String[] lineM_bonus = new String[]{"3 4", "1 3", "2 3", "2 4", "1 2", "2 6", "3 4", "1 5", "70 80", "3 6", "90 100"};
+        for(int i=0; i<m; i++){
+            lineM_bonus[i] = sc.nextLine();
+        }
 
         ArrayList<ArrayList<Integer>> timelines_bonus = new ArrayList<>();
         for (int i = 0; i < lineM_bonus.length; i++) {
@@ -51,6 +58,8 @@ public class Solution_StratBonus {
             System.out.println(Arrays.toString(timelines.get(i).toArray()));
         }
          */
+
+        Solution_StratBonus obj = new Solution_StratBonus();
 
         // chk for stratBonus
         ArrayList<ArrayList<Integer>> timelines5 = new ArrayList<>();
