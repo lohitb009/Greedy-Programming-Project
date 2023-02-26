@@ -62,13 +62,8 @@ public class Solution_StratBonus {
         Solution_StratBonus obj = new Solution_StratBonus();
 
         // chk for stratBonus
-        ArrayList<ArrayList<Integer>> timelines5 = new ArrayList<>();
-        for (int i = 0; i < timelines_bonus.size(); i++) {
-            timelines5.add((ArrayList<Integer>) timelines_bonus.get(i).clone());
-        }
-        System.out.println("stratBonus result = " + obj.stratBonus(timelines5, n, m));
+        System.out.println("stratBonus result = " + obj.stratBonus(timelines_bonus, n, m));
     }
-
     private String stratBonus(ArrayList<ArrayList<Integer>> timelines, int n, int m) {
         /*
         optimal strategy to paint the houses
