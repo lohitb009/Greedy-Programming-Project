@@ -439,7 +439,7 @@ So the time complexity is O(n+logm).<br>
 
 In strategy-bonus we are jumping to the next available startDay if our queue is empty. Afterwards we are continuing <br>
 the same process in which pDay will be updated to the upcoming listing startDay. This will save us the difference:<br>
-<tt><i>(startDay-of-upcoming-listing - current-pDay)</i><br>
+<tt><i>(startDay-of-upcoming-listing - current-pDay)</i><br></tt>
 So the time complexity will be O(m+logm).
 </p>
 
