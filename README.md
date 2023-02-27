@@ -441,6 +441,16 @@ In strategy-bonus we are jumping to the next available startDay if our queue is 
 the same process in which pDay will be updated to the upcoming listing startDay. This will save us the difference:<br>
 <tt><i>(startDay-of-upcoming-listing - current-pDay)</i><br></tt>
 So the time complexity will be O(m+logm).
+</p><br>
+<p>
+<i>Tabular time Comparison:<br><br></i>
+<img src="timings_strat4_vs_stratBonus.png"/>
+</p>
+<br>
+
+<p>
+<i>Graph Comparison:<br><br></i>
+<img src="barGraph.png"/>
 </p>
 
 
