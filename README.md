@@ -47,7 +47,13 @@ Return housePaintString with leading and trailing whitespaces removed
 ```
 <i>Proof of Completion</i>:<br>
 ```aidl
-
+As we are concerned with (n) i.e. painters availability from (1..n), our loop will surely terminate if we exhaust the
+painter's availabilty and we have future listing. In this scenario (n)<(m) where (m) is the number of listed houses for 
+painting.
+If we have less listed houses compared with painters day i.e. (m)<(n), we will exhaust all the available houses & the
+remaining painter's days will be idle.
+In both the scenario's our loop will terminate based upon the exhausting the painters availability thus our algorithm
+will surely terminate.
 ```
 
 <i>Proof of Correctness</i>:<br>
