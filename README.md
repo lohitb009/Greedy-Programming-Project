@@ -121,7 +121,11 @@ Return housePaintString with leading and trailing whitespaces removed
 ```
 <i>Proof of Completion</i>:<br>
 ```aidl
-
+As we are concerned with (n) i.e. painters availability from (1..n), on every pDay we are checking for new listing. If
+any we will add that inside out priority queue (max-heap on the basis of startDay) and paint the latest listing.
+If no listing is avaialble we will paint the best option provided to us by the priority queue. Our program will surely
+terminate if we are left with no painter's availability efvne if we have previously availble listings present inside
+the priority queue. If we are out with all the listing, our program will surely terminate in that scenario.
 ```
 <i>Proof of Correctness</i>:<br>
 ```aidl
@@ -199,6 +203,17 @@ Return housePaintString with leading and trailing whitespaces removed
 ```
 <i>Proof of Completion</i>:<br>
 ```aidl
+As we are concerned with (n) i.e. painters availability from (1..n), on every pDay we are checking for new listing. We 
+will calculate the duration for evey listing and enque those listings inside our priority queue. Since we are using 
+a min heap priority queue, the listing with the shortest duration will be extracted from the queue and will be painted
+by the painter. 
+We will move on towards the next pDay and if the pDay's are exhausted, the algorithm will surely stop.
+
+*** Additional Step implemented inside the algorithm (although not needed according to the problem)
+Before moving on to the next day listing, we are making sure that the duration of our previous listing are updated.
+We are updating the duration of our previous listings and if we ran out of time, we will not enqueu it back inside our
+priority queue. This logic will increase the time complexity by the 0(klogk) where (k) is surely less than or equal to 
+(m). 
 
 ```
 <i>Proof of Correctness</i>:<br>
@@ -267,7 +282,12 @@ Return housePaintString with leading and trailing whitespaces removed
 ```
 <i>Proof of Completion</i>:<br>
 ```aidl
-
+As we are concerned with (n) i.e. painters availability from (1..n), on every pDay we are checking for new listing. We 
+are utilizing the priority queue (max heap) on the basis of deadline. The listing with earliest deadline will be painted
+first.
+If the enqued listing satifies the conditions, it will be painted by the painter and the algorithm will move on to the
+next day. If we are out of pDay, the algorithm will surely terminate as we have exhauted the painter's day and any 
+listing inside the priority queue won't be dequeued.
 ```
 <i>Proof of Correctness</i>:<br>
 ```
@@ -340,7 +360,15 @@ Return housePaintString with leading and trailing whitespaces removed.
 ```
 <i>Proof of Completion</i>:<br>
 ```aidl
-
+As we are concerned with (n) i.e. painters availability from (1..n), on every pDay we are checking for new listing. We 
+are utilizing the priority queue (max heap) on the basis of deadline. The listing with earliest deadline will be painted
+first.
+If the enqued listing satifies the conditions, it will be painted by the painter and the algorithm will move on to the
+next day. If we are out of pDay, the algorithm will surely terminate as we have exhauted the painter's day and any 
+listing inside the priority queue won't be dequeued.
+The optimality for this strategy in comparison with strategy 4 is w.r.t. the gap days. Suppose our priority queue is 
+empty and the next listing is "far" ahead. The algorithm will jump to the startDay of the upcoming listing (condition
+startDay <= n) and we will follow the same above mentioned step.
 ```
 <i>Proof of Correctness</i>:<br>
 ```
@@ -401,6 +429,18 @@ n = 5000 & m = 4750<br>
 <p>
 n = 20000 & m = 19000<br>
 <img height="400" src="20000vs19000.jpg" width="400"/>
+</p>
+
+### Analysis Strategy 4 v/s Strategy Bonus <br>
+<p>
+In strategy-4 we are iterating the pDays if the priority queue is empty & either we don't have any available listing or
+<br>the available listing startDay is quite far ahead (condition startDay <= n).<br>
+So the time complexity is O(n+logm).<br>
+
+In strategy-bonus we are jumping to the next available startDay if our queue is empty. Afterwards we are continuing <br>
+the same process in which pDay will be updated to the upcoming listing startDay. This will save us the difference:<br>
+<tt><i>(startDay-of-upcoming-listing - current-pDay)</i><br>
+So the time complexity will be O(m+logm).
 </p>
 
 
