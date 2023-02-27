@@ -366,7 +366,7 @@ and continue the processing in a similar way
 Time Complexity: O(m+logm)
 ```
 
-#### Tabular Experimental Analysis for the strategies
+### Tabular Experimental Analysis for the strategies
 <p>
 n = 1000 & m = 950<br>
 <img height="400" src="1000vs950.jpg" width="400"/>
