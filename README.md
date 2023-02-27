@@ -1,7 +1,20 @@
 # <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*gzEyNsTYNHvqLoatYCZqqQ.png" width="70" height="60" /> Greedy-Programming-Project <br>
-##### <i> Lohit Bhambri (lohit.bhambri@ufl.edu) </i>
-##### <i> Sharath Bhushan Podila (spodila@ufl.edu) </i>
-<p>COT5405 Analysis of Algorithm (AOA)</p>
+### COT5405 Analysis of Algorithm (AOA)
+
+### Team Members Contribution
+#### <i> Lohit Bhambri (lohit.bhambri@ufl.edu) </i>
+1. Implemented Strategy1
+2. Implemented Strategy2
+3. Implemented Strategy4
+4. Implemented Strategy Bonus (equal contributor)
+5. Report Compilation
+
+#### <i> Sharath Bhushan Podila (spodila@ufl.edu) </i>
+1. Implemented Strategy3
+2. Implemented Strategy Bonus (equal contributor)
+3. Implemented MakeFile mechanism and execution in Remote CISE Machines
+4. Experimental Comparative Strategy mechanism result generation
+5. Analysis of Algorithms
 
 ### Strategy 1
 <i>Algorithm</i>:<br>
