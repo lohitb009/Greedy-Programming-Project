@@ -94,7 +94,10 @@ Output:
 
 Initialize an empty string housePaintString
 Initialize a priority queue latestHouses to store the painting timelines for each house
-The priority queue latestHouses is sorted based on the duration of the painting timeline, and if the duration is the same, based on the end date of the painting timeline
+
+The priority queue latestHouses is sorted based on the duration of the painting timeline, and if the duration is the same, 
+based on the end date of the painting timeline
+
 Initialize housePtr to 0
 For each day pDay from 1 to n do the following:
     a. If pDay is greater than 1, do the following:
@@ -134,7 +137,10 @@ Output:
     A string containing the sequence of house numbers in the order they were painted
 
 Initialize an empty string housePaintString
-Initialize a priority queue latestHouses to store the painting timelines for each house, with a custom comparator function that compares based on the end date and then the start date of the painting timeline
+
+Initialize a priority queue latestHouses to store the painting timelines for each house, with a custom comparator function 
+that compares based on the end date and then the start date of the painting timeline
+
 Initialize housePtr to 0
 For each day pDay from 1 to n do the following:
     a. While housePtr is less than m and the start date of the painting timeline at housePtr is equal to pDay, do the following:
@@ -167,7 +173,11 @@ Output:
     A string containing the sequence of house numbers in the order they were painted
 
 Initialize an empty string housePaintString to store the sequence of house numbers in the order they were painted.
-Initialize a priority queue latestHouses to store the painting timelines for each house in the order of their completion time, with the house that finishes painting first being at the front of the queue. Each element in the queue is an ArrayList with three integers: the start time, the end time, and the house number.
+
+Initialize a priority queue latestHouses to store the painting timelines for each house in the order of their completion time,
+with the house that finishes painting first being at the front of the queue. 
+Each element in the queue is an ArrayList with three integers: the start time, the end time, and the house number.
+
 Initialize a variable housePtr to keep track of the current house being processed in timelines.
 
 For each day pDay from 1 to n do the following:
