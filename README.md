@@ -210,3 +210,14 @@ For each day pDay from 1 to n do the following:
             iv. Else, if the start time of peekHouse is greater than pDay, break the loop.
 Return housePaintString with leading and trailing whitespaces removed.
 ```
+
+#### Tabular Experimental Analysis for the strategies
+<p>
+n = 1000 & m = 950<br>
+<img height="400" src="1000vs950.jpg" width="400"/>
+</p>
+
+<p>
+n = 2000 & m = 1900<br>
+<img height="400" src="2000vs1900.jpg" width="400"/>
+</p>
