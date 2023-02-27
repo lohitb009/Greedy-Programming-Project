@@ -8,13 +8,14 @@
 3. Implemented Strategy4
 4. Implemented Strategy Bonus (equal contributor)
 5. Report Compilation
+6. Analysis of Algorithms (equal contributor)
 
 #### <i> Sharath Bhushan Podila (spodila@ufl.edu) </i>
 1. Implemented Strategy3
 2. Implemented Strategy Bonus (equal contributor)
 3. Implemented MakeFile mechanism and execution in Remote CISE Machines
 4. Experimental Comparative Strategy mechanism result generation
-5. Analysis of Algorithms
+5. Analysis of Algorithms (equal contributor)
 
 ### Strategy 1
 <i>Algorithm</i>:<br>
@@ -44,7 +45,37 @@ For each day pDay from 1 to n do the following:
     b. If houseQueue is empty, break the loop
 Return housePaintString with leading and trailing whitespaces removed
 ```
+<i>Proof of Completion</i>:<br>
+```aidl
 
+```
+
+<i>Proof of Correctness</i>:<br>
+```aidl
+Lets assume that our greedy approach generates output order as 
+G = {g1, g2, g3, g4, g5 .... gN}
+
+Lets assume that our optimal approach generates output order as 
+O = {o1, o2, o3, o4, o5 .... gM}
+
+Cardinality |O| >= |G|; therefore M>=N.
+Lets assume till (k-1), both greedy and optimal approaches are producing the same output.
+At kth point we have conflict.
+Since our greedy approach is picking the earlist listing, we can state that gK.startDay <= oK.startDay.
+Therefore we will start-replacing gK with oK inside (0) set via exchange argument.
+
+Our updated optimal (0) set will be 
+0 = {o1,o2,o3,o4...oK-1,gk,gk+1,gk+2,gk+3...gN,oN+1,oN+2...,oM}
+Therefore our greedy will become optimal is M=N strictly.
+```
+
+<i>Time Complexity Analysis</i>:<br>
+```
+For each pDay ranging from (1..n) we are checking if the the head of the queue's startDay and endDay are following 
+within threshold criteria or not. If yes, we are paining removing the head pair from the queue & painting the house else
+we are just removing the pair from the queue. Since we cannot exceed the (n) buffer, our algorithm will be linear
+Time Complexity: O(n)
+```
 
 ### Strategy 2
 <i>Algorithm:</i><br>
@@ -82,7 +113,37 @@ For each day pDay from 1 to n do the following:
         iv. Else, if pDay is less than the start day of peekHouse, break the loop
 Return housePaintString with leading and trailing whitespaces removed
 ```
+<i>Proof of Completion</i>:<br>
+```aidl
 
+```
+<i>Proof of Correctness</i>:<br>
+```aidl
+Lets assume that our greedy approach generates output order as 
+G = {g1, g2, g3, g4, g5 .... gN}
+
+Lets assume that our optimal approach generates output order as 
+O = {o1, o2, o3, o4, o5 .... gM}
+
+Cardinality |O| >= |G|; therefore M>=N.
+Lets assume till (k-1), both greedy and optimal approaches are producing the same output.
+At kth point we have conflict.
+Since our greedy approach is picking the latest listing i.e. latest start day (maximum), we can state that 
+gK.startDay >= oK.startDay.
+Therefore we will start-replacing gK with oK inside (G) set via exchange argument.
+
+Our updated greedy (G) set will be 
+G = {g1,g2,g3,g4...gK-1,ok,ok+1,ok+2,ok+3...oN}
+
+Therefore our greedy will become optimal is M=N strictly.
+```
+<i>Time Complexity Analysis</i>:<br>
+```
+For each pDay ranging from (1..n) we are checking if there is an available listing for that day or not. If yes, we are
+adding it to priority-queue (aka max-heap) and extracting the earliest available listing. If that listing is satisfying
+the threshold, we are painting that house.
+Time Complexity: O(n+logm)
+```
 
 ### Strategy 3
 <i>Algorithm</i>:
@@ -130,7 +191,37 @@ For each day pDay from 1 to n do the following:
         iv. Else, if the painting timeline of peekHouse starts after pDay break the loop
 Return housePaintString with leading and trailing whitespaces removed
 ```
+<i>Proof of Completion</i>:<br>
+```aidl
 
+```
+<i>Proof of Correctness</i>:<br>
+```
+Lets assume that our greedy approach generates output order as 
+G = {g1, g2, g3, g4, g5 .... gN}
+
+Lets assume that our optimal approach generates output order as 
+O = {o1, o2, o3, o4, o5 .... gM}
+
+Cardinality |O| >= |G|; therefore M>=N.
+Lets assume till (k-1), both greedy and optimal approaches are producing the same output.
+At kth point we have conflict.
+Since our greedy approach is picking the listing with minimum duration, we can state that 
+gK.duration <= oK.duration.
+Therefore we will start-replacing gK with oK inside (O) set via exchange argument.
+
+Our updated greedy (G) set will be 
+O = {o1,o2,o3,o4...oK-1,gk,gk+1,gk+2,gk+3...gN,oN+1,oN+2...,oM}
+
+Therefore our greedy will become optimal is M=N strictly.
+```
+<i>Time Complexity Analysis</i>:<br>
+```
+For each pDay ranging from (1..n) we are checking if there is an available listing for that day or not. If yes, we are
+adding it to priority-queue (aka min-heap) by calculating the duration and extracting the listing with minimum duration. 
+If that listing is satisfying the threshold, we are painting that house.
+Time Complexity: O(n+logm)
+```
 
 ### Strategy 4
 <i>Algorithm</i>:
@@ -168,7 +259,38 @@ For each day pDay from 1 to n do the following:
         iv. Else, if the painting timeline of peekHouse starts after pDay break the loop
 Return housePaintString with leading and trailing whitespaces removed
 ```
+<i>Proof of Completion</i>:<br>
+```aidl
 
+```
+<i>Proof of Correctness</i>:<br>
+```
+Lets assume that our greedy approach generates output order as 
+G = {g1, g2, g3, g4, g5 .... gN}
+
+Lets assume that our optimal approach generates output order as 
+O = {o1, o2, o3, o4, o5 .... gM}
+
+Cardinality |O| >= |G|; therefore M>=N.
+Lets assume till (k-1), both greedy and optimal approaches are producing the same output.
+At kth point we have conflict.
+Since our greedy approach is picking the listing with minimum endDate, we can state that 
+gK.endDate <= oK.endDate.
+Therefore we will start-replacing gK with oK inside (O) set via exchange argument.
+
+Our updated greedy (G) set will be 
+O = {o1,o2,o3,o4...oK-1,gk,gk+1,gk+2,gk+3...gN,oN+1,oN+2...,oM}
+
+Therefore our greedy will become optimal is M=N strictly.
+```
+
+<i>Time Complexity Analysis</i>:<br>
+```
+For each pDay ranging from (1..n) we are checking if there is an available listing for that day or not. If yes, we are
+adding it to priority-queue (aka max-heap) extracting the listing with earliest end date.If that listing is satisfying 
+the threshold, we are painting that house.
+Time Complexity: O(n+logm)
+```
 
 ### Strategy Bonus
 <i>Algorithm</i>:
@@ -210,6 +332,39 @@ For each day pDay from 1 to n do the following:
             iv. Else, if the start time of peekHouse is greater than pDay, break the loop.
 Return housePaintString with leading and trailing whitespaces removed.
 ```
+<i>Proof of Completion</i>:<br>
+```aidl
+
+```
+<i>Proof of Correctness</i>:<br>
+```
+Lets assume that our greedy approach generates output order as 
+G = {g1, g2, g3, g4, g5 .... gN}
+
+Lets assume that our optimal approach generates output order as 
+O = {o1, o2, o3, o4, o5 .... gM}
+
+Cardinality |O| >= |G|; therefore M>=N.
+Lets assume till (k-1), both greedy and optimal approaches are producing the same output.
+At kth point we have conflict.
+Since our greedy approach is picking the listing with minimum duration, we can state that 
+gK.duration <= oK.duration.
+Therefore we will start-replacing gK with oK inside (O) set via exchange argument.
+
+Our updated greedy (G) set will be 
+O = {o1,o2,o3,o4...oK-1,gk,gk+1,gk+2,gk+3...gN,oN+1,oN+2...,oM}
+
+Therefore our greedy will become optimal is M=N strictly.
+```
+<i>Time Complexity Analysis</i>:<br>
+```
+For each pDay ranging from (1..n) we are checking if there is an available listing for that day or not. If yes, we are
+adding it to priority-queue (aka max-heap) extracting the listing with earliest end date.If that listing is satisfying 
+the threshold, we are painting that house. Additionally, if our priority-queue is empty, and we have the next avaialble
+listing startDay way ahead i.e. startDay of new listing > pday, we will update our pDay to the next available startDay
+and continue the processing in a similar way
+Time Complexity: O(m+logm)
+```
 
 #### Tabular Experimental Analysis for the strategies
 <p>
@@ -221,3 +376,25 @@ n = 1000 & m = 950<br>
 n = 2000 & m = 1900<br>
 <img height="400" src="2000vs1900.jpg" width="400"/>
 </p>
+
+<p>
+n = 3000 & m = 2850<br>
+<img height="400" src="3000vs2850.jpg" width="400"/>
+</p>
+
+<p>
+n = 4000 & m = 3800<br>
+<img height="400" src="4000vs3800.jpg" width="400"/>
+</p>
+
+<p>
+n = 5000 & m = 4750<br>
+<img height="400" src="5000vs4750.jpg" width="400"/>
+</p>
+
+<p>
+n = 20000 & m = 19000<br>
+<img height="400" src="20000vs19000.jpg" width="400"/>
+</p>
+
+
